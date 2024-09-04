@@ -762,6 +762,18 @@ func JLPTN4ReadingloadLocalData() -> [Question] {
             answer: "困っている人に親切にしよう",
             imageName: "JLPTN4ReadingQuestionImage4"
         ),
+        Question(
+            question:"ハメスさんとマリアさんは、「春を楽しもう」に行きたいと思っています。\n4 月に行われるもので、お店の中で音楽を聞きながら、お昼に食事ができる\nものがいいです。ハメスさんたちが選べるのは、どれですか。",
+            options: ["②", "③", "⑤", "⑥"],
+            answer: "⑥",
+            imageName: "JLPTN4ReadingQuestionImage5"
+        ),
+        Question(
+            question:"ジーナさんは、「春を楽しもう」に行こうと思っています。土曜日に行きたい\nですが、集まる時間が13時より早いものには行けません。料金は1,000円以下が\nいいです。ジーナさんが選べるのは、どれですか。",
+            options: ["②と③", "②と③と④", "②と③と⑤", "③と⑤"],
+            answer: "②と③",
+            imageName: "JLPTN4ReadingQuestionImage5"
+        ),
     ]
     return questions
 }

@@ -15,7 +15,7 @@ struct Question: Identifiable, Codable {
     var tappedAnswer: String = ""  // The user's selected answer
     var imageName: String?  // Optional image name
     var underlinedKeywords: [String]?  // Optional list of keywords to underline in the question text
-    var optionKeywords: [[String]]?  // Optional list of keywords for each option (list of lists)
+
 
     // CodingKeys to map properties to their respective keys during encoding/decoding
     enum CodingKeys: String, CodingKey {
@@ -26,6 +26,5 @@ struct Question: Identifiable, Codable {
         case tappedAnswer
         case imageName
         case underlinedKeywords
-        case optionKeywords
     }
 }
