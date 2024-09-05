@@ -12,7 +12,7 @@
 		16293FE72C85545900580FBE /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16293FE42C85545900580FBE /* DataLoader.swift */; };
 		16293FF52C85546700580FBE /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16293FE82C85546700580FBE /* CustomButton.swift */; };
 		16293FF62C85546700580FBE /* HighlightedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16293FE92C85546700580FBE /* HighlightedText.swift */; };
-		16293FF72C85546700580FBE /* SelectGrammarTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16293FEA2C85546700580FBE /* SelectGrammarTest.swift */; };
+		16293FF72C85546700580FBE /* JLPTN2SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16293FEA2C85546700580FBE /* JLPTN2SelectView.swift */; };
 		16293FF82C85546700580FBE /* JLPTN5GrammarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16293FEB2C85546700580FBE /* JLPTN5GrammarView.swift */; };
 		16293FF92C85546700580FBE /* JLPTN5ReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16293FEC2C85546700580FBE /* JLPTN5ReadingView.swift */; };
 		16293FFA2C85546700580FBE /* JLPTN4SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16293FED2C85546700580FBE /* JLPTN4SelectView.swift */; };
@@ -20,7 +20,7 @@
 		16293FFC2C85546700580FBE /* JLPTN5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16293FEF2C85546700580FBE /* JLPTN5.swift */; };
 		16293FFD2C85546700580FBE /* ScoreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16293FF02C85546700580FBE /* ScoreCardView.swift */; };
 		16293FFE2C85546700580FBE /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16293FF12C85546700580FBE /* Home.swift */; };
-		16293FFF2C85546700580FBE /* JLPTN2SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16293FF22C85546700580FBE /* JLPTN2SelectView.swift */; };
+		16293FFF2C85546700580FBE /* JLPTN1SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16293FF22C85546700580FBE /* JLPTN1SelectView.swift */; };
 		162940002C85546700580FBE /* JLPTN3SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16293FF32C85546700580FBE /* JLPTN3SelectView.swift */; };
 		162940012C85546700580FBE /* JLPTN5AUDIOTEST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16293FF42C85546700580FBE /* JLPTN5AUDIOTEST.swift */; };
 		162940032C8554C500580FBE /* JLPTN4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162940022C8554C500580FBE /* JLPTN4.swift */; };
@@ -147,7 +147,7 @@
 		16293FE42C85545900580FBE /* DataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		16293FE82C85546700580FBE /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		16293FE92C85546700580FBE /* HighlightedText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlightedText.swift; sourceTree = "<group>"; };
-		16293FEA2C85546700580FBE /* SelectGrammarTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGrammarTest.swift; sourceTree = "<group>"; };
+		16293FEA2C85546700580FBE /* JLPTN2SelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLPTN2SelectView.swift; sourceTree = "<group>"; };
 		16293FEB2C85546700580FBE /* JLPTN5GrammarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLPTN5GrammarView.swift; sourceTree = "<group>"; };
 		16293FEC2C85546700580FBE /* JLPTN5ReadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLPTN5ReadingView.swift; sourceTree = "<group>"; };
 		16293FED2C85546700580FBE /* JLPTN4SelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLPTN4SelectView.swift; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 		16293FEF2C85546700580FBE /* JLPTN5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLPTN5.swift; sourceTree = "<group>"; };
 		16293FF02C85546700580FBE /* ScoreCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreCardView.swift; sourceTree = "<group>"; };
 		16293FF12C85546700580FBE /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
-		16293FF22C85546700580FBE /* JLPTN2SelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLPTN2SelectView.swift; sourceTree = "<group>"; };
+		16293FF22C85546700580FBE /* JLPTN1SelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLPTN1SelectView.swift; sourceTree = "<group>"; };
 		16293FF32C85546700580FBE /* JLPTN3SelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLPTN3SelectView.swift; sourceTree = "<group>"; };
 		16293FF42C85546700580FBE /* JLPTN5AUDIOTEST.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLPTN5AUDIOTEST.swift; sourceTree = "<group>"; };
 		162940022C8554C500580FBE /* JLPTN4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLPTN4.swift; sourceTree = "<group>"; };
@@ -294,8 +294,8 @@
 				16293FE82C85546700580FBE /* CustomButton.swift */,
 				16293FE92C85546700580FBE /* HighlightedText.swift */,
 				16293FF12C85546700580FBE /* Home.swift */,
-				16293FF22C85546700580FBE /* JLPTN2SelectView.swift */,
-				16293FEA2C85546700580FBE /* SelectGrammarTest.swift */,
+				16293FF22C85546700580FBE /* JLPTN1SelectView.swift */,
+				16293FEA2C85546700580FBE /* JLPTN2SelectView.swift */,
 				16293FF32C85546700580FBE /* JLPTN3SelectView.swift */,
 				16293FED2C85546700580FBE /* JLPTN4SelectView.swift */,
 				162C18E12C86ABBC0066BF4C /* JLPTN5SelectView.swift */,
@@ -679,7 +679,7 @@
 				16293FE72C85545900580FBE /* DataLoader.swift in Sources */,
 				1629400F2C85553F00580FBE /* JLPTN3ReadingView.swift in Sources */,
 				16293FFD2C85546700580FBE /* ScoreCardView.swift in Sources */,
-				16293FF72C85546700580FBE /* SelectGrammarTest.swift in Sources */,
+				16293FF72C85546700580FBE /* JLPTN2SelectView.swift in Sources */,
 				16293FE52C85545900580FBE /* Question.swift in Sources */,
 				1629401B2C85562F00580FBE /* JLPTN1.swift in Sources */,
 				162940052C8554CE00580FBE /* JLPTN4GrammarView.swift in Sources */,
@@ -692,7 +692,7 @@
 				1629401D2C85563600580FBE /* JLPTN1GrammarView.swift in Sources */,
 				162940092C85550F00580FBE /* JLPTN4ReadingView.swift in Sources */,
 				162940212C85565800580FBE /* JLPTN1AUDIOTEST.swift in Sources */,
-				16293FFF2C85546700580FBE /* JLPTN2SelectView.swift in Sources */,
+				16293FFF2C85546700580FBE /* JLPTN1SelectView.swift in Sources */,
 				16293FFE2C85546700580FBE /* Home.swift in Sources */,
 				162940112C85554400580FBE /* JLPTN3AUDIOTEST.swift in Sources */,
 				162940192C85560A00580FBE /* JLPTN2AUDIOTEST.swift in Sources */,

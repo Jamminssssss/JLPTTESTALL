@@ -1,17 +1,17 @@
 //
-//  Select.swift
+//  SelectGrammarTest.swift
 //  JlptN5Test
 //
-//  Created by Jeamin on 7/31/24.
+//  Created by Jeamin on 8/4/24.
 //
 
 import SwiftUI
 
-struct JLPTN1SelectView: View {
-    @State private var showJLPTN1: Bool = false
-    @State private var showJLPTN1GrammarView: Bool = false
-    @State private var showJLPTN1ReadingView: Bool = false
-    @State private var showJLPTN1AUDIOTEST: Bool = false
+struct JLPTN2SelectView: View {
+    @State private var showJLPTN2: Bool = false
+    @State private var showJLPTN2GrammarView: Bool = false
+    @State private var showJLPTN2ReadingView: Bool = false
+    @State private var showJLPTN2AUDIOTEST: Bool = false
 
     var body: some View {
         GeometryReader { geometry in
@@ -22,7 +22,7 @@ struct JLPTN1SelectView: View {
                 // First Row
                 HStack(spacing: 0) {
                     Button(action: {
-                        showJLPTN1.toggle()
+                        showJLPTN2.toggle()
                     }) {
                         Image("JLPTN5Image")
                             .resizable()
@@ -30,14 +30,14 @@ struct JLPTN1SelectView: View {
                             .frame(width: width, height: height)
                             .clipped()
                     }
-                    .fullScreenCover(isPresented: $showJLPTN1) {
+                    .fullScreenCover(isPresented: $showJLPTN2) {
                         JLPTN2(onFinish: {
-                            showJLPTN1 = false
+                            showJLPTN2 = false
                         })
                     }
                     
                     Button(action: {
-                        showJLPTN1GrammarView.toggle()
+                        showJLPTN2GrammarView.toggle()
                     }) {
                         Image("JLPTN5GrammarImage")
                             .resizable()
@@ -45,9 +45,9 @@ struct JLPTN1SelectView: View {
                             .frame(width: width, height: height)
                             .clipped()
                     }
-                    .fullScreenCover(isPresented: $showJLPTN1GrammarView) {
-                        JLPTN1GrammarView(onFinish: {
-                            showJLPTN1GrammarView = false
+                    .fullScreenCover(isPresented: $showJLPTN2GrammarView) {
+                        JLPTN2GrammarView(onFinish: {
+                            showJLPTN2GrammarView = false
                         })
                     }
                 }
@@ -55,7 +55,7 @@ struct JLPTN1SelectView: View {
                 // Second Row
                 HStack(spacing: 0) {
                     Button(action: {
-                        showJLPTN1ReadingView.toggle()
+                        showJLPTN2ReadingView.toggle()
                     }) {
                         Image("JLPTN5ReadingImage")
                             .resizable()
@@ -63,14 +63,14 @@ struct JLPTN1SelectView: View {
                             .frame(width: width, height: height)
                             .clipped()
                     }
-                    .fullScreenCover(isPresented: $showJLPTN1ReadingView) {
-                        JLPTN1ReadingView(onFinish: {
-                            showJLPTN1ReadingView = false
+                    .fullScreenCover(isPresented: $showJLPTN2ReadingView) {
+                        JLPTN2ReadingView(onFinish: {
+                            showJLPTN2ReadingView = false
                         })
                     }
                     
                     Button(action: {
-                        showJLPTN1AUDIOTEST.toggle()
+                        showJLPTN2AUDIOTEST.toggle()
                     }) {
                         Image("JLPTN5AUDIOTESTImage")
                             .resizable()
@@ -78,9 +78,9 @@ struct JLPTN1SelectView: View {
                             .frame(width: width, height: height)
                             .clipped()
                     }
-                    .fullScreenCover(isPresented: $showJLPTN1AUDIOTEST) {
-                        JLPTN1AUDIOTEST(onFinish: {
-                            showJLPTN1AUDIOTEST = false
+                    .fullScreenCover(isPresented: $showJLPTN2AUDIOTEST) {
+                        JLPTN2AUDIOTEST(onFinish: {
+                            showJLPTN2AUDIOTEST = false
                         })
                     }
                 }
