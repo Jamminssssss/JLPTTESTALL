@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		161601F92C8AE22500441B2E /* N4Q18.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 161601F42C8AE22500441B2E /* N4Q18.mp3 */; };
+		161601FA2C8AE22500441B2E /* N4Q19.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 161601F52C8AE22500441B2E /* N4Q19.mp3 */; };
+		161601FB2C8AE22500441B2E /* N4Q20.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 161601F62C8AE22500441B2E /* N4Q20.mp3 */; };
+		161601FC2C8AE22500441B2E /* N4Q17.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 161601F72C8AE22500441B2E /* N4Q17.mp3 */; };
+		161601FD2C8AE22500441B2E /* N4Q16.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 161601F82C8AE22500441B2E /* N4Q16.mp3 */; };
+		161602062C8AE5D600441B2E /* N4Q22.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 161601FE2C8AE5D600441B2E /* N4Q22.mp3 */; };
+		161602072C8AE5D600441B2E /* N4Q26.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 161601FF2C8AE5D600441B2E /* N4Q26.mp3 */; };
+		161602082C8AE5D600441B2E /* N4Q23.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 161602002C8AE5D600441B2E /* N4Q23.mp3 */; };
+		161602092C8AE5D600441B2E /* N4Q21.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 161602012C8AE5D600441B2E /* N4Q21.mp3 */; };
+		1616020A2C8AE5D600441B2E /* N4Q24.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 161602022C8AE5D600441B2E /* N4Q24.mp3 */; };
+		1616020B2C8AE5D600441B2E /* N4Q25.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 161602032C8AE5D600441B2E /* N4Q25.mp3 */; };
+		1616020C2C8AE5D600441B2E /* N4Q27.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 161602042C8AE5D600441B2E /* N4Q27.mp3 */; };
+		1616020D2C8AE5D600441B2E /* N4Q28.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 161602052C8AE5D600441B2E /* N4Q28.mp3 */; };
 		16293FE52C85545900580FBE /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16293FE22C85545900580FBE /* Question.swift */; };
 		16293FE62C85545900580FBE /* AudioQuestion .swift in Sources */ = {isa = PBXBuildFile; fileRef = 16293FE32C85545900580FBE /* AudioQuestion .swift */; };
 		16293FE72C85545900580FBE /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16293FE42C85545900580FBE /* DataLoader.swift */; };
@@ -143,6 +156,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		161601F42C8AE22500441B2E /* N4Q18.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = N4Q18.mp3; sourceTree = "<group>"; };
+		161601F52C8AE22500441B2E /* N4Q19.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = N4Q19.mp3; sourceTree = "<group>"; };
+		161601F62C8AE22500441B2E /* N4Q20.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = N4Q20.mp3; sourceTree = "<group>"; };
+		161601F72C8AE22500441B2E /* N4Q17.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = N4Q17.mp3; sourceTree = "<group>"; };
+		161601F82C8AE22500441B2E /* N4Q16.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = N4Q16.mp3; sourceTree = "<group>"; };
+		161601FE2C8AE5D600441B2E /* N4Q22.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = N4Q22.mp3; sourceTree = "<group>"; };
+		161601FF2C8AE5D600441B2E /* N4Q26.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = N4Q26.mp3; sourceTree = "<group>"; };
+		161602002C8AE5D600441B2E /* N4Q23.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = N4Q23.mp3; sourceTree = "<group>"; };
+		161602012C8AE5D600441B2E /* N4Q21.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = N4Q21.mp3; sourceTree = "<group>"; };
+		161602022C8AE5D600441B2E /* N4Q24.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = N4Q24.mp3; sourceTree = "<group>"; };
+		161602032C8AE5D600441B2E /* N4Q25.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = N4Q25.mp3; sourceTree = "<group>"; };
+		161602042C8AE5D600441B2E /* N4Q27.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = N4Q27.mp3; sourceTree = "<group>"; };
+		161602052C8AE5D600441B2E /* N4Q28.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = N4Q28.mp3; sourceTree = "<group>"; };
 		16293FE22C85545900580FBE /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		16293FE32C85545900580FBE /* AudioQuestion .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AudioQuestion .swift"; sourceTree = "<group>"; };
 		16293FE42C85545900580FBE /* DataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
@@ -386,6 +412,19 @@
 				162940492C856C6600580FBE /* N4Q13.mp3 */,
 				1629404A2C856C6600580FBE /* N4Q14.mp3 */,
 				1629404B2C856C6600580FBE /* N4Q15.mp3 */,
+				161601F82C8AE22500441B2E /* N4Q16.mp3 */,
+				161601F72C8AE22500441B2E /* N4Q17.mp3 */,
+				161601F42C8AE22500441B2E /* N4Q18.mp3 */,
+				161601F52C8AE22500441B2E /* N4Q19.mp3 */,
+				161601F62C8AE22500441B2E /* N4Q20.mp3 */,
+				161602012C8AE5D600441B2E /* N4Q21.mp3 */,
+				161601FE2C8AE5D600441B2E /* N4Q22.mp3 */,
+				161602002C8AE5D600441B2E /* N4Q23.mp3 */,
+				161602022C8AE5D600441B2E /* N4Q24.mp3 */,
+				161602032C8AE5D600441B2E /* N4Q25.mp3 */,
+				161601FF2C8AE5D600441B2E /* N4Q26.mp3 */,
+				161602042C8AE5D600441B2E /* N4Q27.mp3 */,
+				161602052C8AE5D600441B2E /* N4Q28.mp3 */,
 			);
 			path = JLPTN4AUDIO;
 			sourceTree = "<group>";
@@ -578,6 +617,7 @@
 				162940532C856C6600580FBE /* N4Q7.mp3 in Resources */,
 				1629409B2C856D0400580FBE /* N2Q5.mp3 in Resources */,
 				162940B22C856D0400580FBE /* N2Q28.mp3 in Resources */,
+				1616020C2C8AE5D600441B2E /* N4Q27.mp3 in Resources */,
 				162940B42C856D0400580FBE /* N2Q30.mp3 in Resources */,
 				162940C92C856D3600580FBE /* N1Q6.mp3 in Resources */,
 				1629404F2C856C6600580FBE /* N4Q3.mp3 in Resources */,
@@ -585,13 +625,17 @@
 				1629406D2C856CAB00580FBE /* N3Q5.mp3 in Resources */,
 				1629405A2C856C6600580FBE /* N4Q14.mp3 in Resources */,
 				1629406B2C856CAB00580FBE /* N3Q3.mp3 in Resources */,
+				161601F92C8AE22500441B2E /* N4Q18.mp3 in Resources */,
 				162940982C856D0400580FBE /* N2Q2.mp3 in Resources */,
 				1629409E2C856D0400580FBE /* N2Q8.mp3 in Resources */,
+				1616020B2C8AE5D600441B2E /* N4Q25.mp3 in Resources */,
 				162940E12C85C7F600580FBE /* N5Q22.mp3 in Resources */,
 				162940D92C85BF5400580FBE /* N5Q18.mp3 in Resources */,
 				1629404E2C856C6600580FBE /* N4Q2.mp3 in Resources */,
+				1616020D2C8AE5D600441B2E /* N4Q28.mp3 in Resources */,
 				1629409D2C856D0400580FBE /* N2Q7.mp3 in Resources */,
 				162940A62C856D0400580FBE /* N2Q16.mp3 in Resources */,
+				161601FD2C8AE22500441B2E /* N4Q16.mp3 in Resources */,
 				162940D62C85BF5400580FBE /* N5Q15.mp3 in Resources */,
 				162940582C856C6600580FBE /* N4Q12.mp3 in Resources */,
 				162940512C856C6600580FBE /* N4Q5.mp3 in Resources */,
@@ -613,13 +657,16 @@
 				162940B32C856D0400580FBE /* N2Q29.mp3 in Resources */,
 				162940B02C856D0400580FBE /* N2Q26.mp3 in Resources */,
 				162940352C856C4100580FBE /* N5Q6.mp3 in Resources */,
+				161601FB2C8AE22500441B2E /* N4Q20.mp3 in Resources */,
 				162940D02C856D3600580FBE /* N1Q13.mp3 in Resources */,
+				161602062C8AE5D600441B2E /* N4Q22.mp3 in Resources */,
 				162940E02C85C7F600580FBE /* N5Q21.mp3 in Resources */,
 				1629406A2C856CAB00580FBE /* N3Q2.mp3 in Resources */,
 				162940372C856C4100580FBE /* N5Q8.mp3 in Resources */,
 				162940E32C85C7F600580FBE /* N5Q23.mp3 in Resources */,
 				162940592C856C6600580FBE /* N4Q13.mp3 in Resources */,
 				1629409F2C856D0400580FBE /* N2Q9.mp3 in Resources */,
+				161602072C8AE5D600441B2E /* N4Q26.mp3 in Resources */,
 				162940AF2C856D0400580FBE /* N2Q25.mp3 in Resources */,
 				162940D72C85BF5400580FBE /* N5Q16.mp3 in Resources */,
 				162940332C856C4100580FBE /* N5Q4.mp3 in Resources */,
@@ -627,6 +674,7 @@
 				162940AB2C856D0400580FBE /* N2Q21.mp3 in Resources */,
 				162940722C856CAB00580FBE /* N3Q10.mp3 in Resources */,
 				162940732C856CAB00580FBE /* N3Q11.mp3 in Resources */,
+				161601FC2C8AE22500441B2E /* N4Q17.mp3 in Resources */,
 				162940E22C85C7F600580FBE /* N5Q19.mp3 in Resources */,
 				1629406E2C856CAB00580FBE /* N3Q6.mp3 in Resources */,
 				162940382C856C4100580FBE /* N5Q9.mp3 in Resources */,
@@ -635,6 +683,7 @@
 				162940322C856C4100580FBE /* N5Q3.mp3 in Resources */,
 				162940992C856D0400580FBE /* N2Q3.mp3 in Resources */,
 				1629405B2C856C6600580FBE /* N4Q15.mp3 in Resources */,
+				161602092C8AE5D600441B2E /* N4Q21.mp3 in Resources */,
 				1629409A2C856D0400580FBE /* N2Q4.mp3 in Resources */,
 				162940C72C856D3600580FBE /* N1Q4.mp3 in Resources */,
 				162940AA2C856D0400580FBE /* N2Q20.mp3 in Resources */,
@@ -642,6 +691,7 @@
 				162940572C856C6600580FBE /* N4Q11.mp3 in Resources */,
 				162940C62C856D3600580FBE /* N1Q3.mp3 in Resources */,
 				1629406F2C856CAB00580FBE /* N3Q7.mp3 in Resources */,
+				1616020A2C8AE5D600441B2E /* N4Q24.mp3 in Resources */,
 				1629403B2C856C4100580FBE /* N5Q12.mp3 in Resources */,
 				162940A52C856D0400580FBE /* N2Q15.mp3 in Resources */,
 				162940742C856CAB00580FBE /* N3Q12.mp3 in Resources */,
@@ -650,6 +700,7 @@
 				162940692C856CAB00580FBE /* N3Q1.mp3 in Resources */,
 				162940D82C85BF5400580FBE /* N5Q17.mp3 in Resources */,
 				162940CD2C856D3600580FBE /* N1Q10.mp3 in Resources */,
+				161601FA2C8AE22500441B2E /* N4Q19.mp3 in Resources */,
 				162940522C856C6600580FBE /* N4Q6.mp3 in Resources */,
 				162940712C856CAB00580FBE /* N3Q9.mp3 in Resources */,
 				162940C82C856D3600580FBE /* N1Q5.mp3 in Resources */,
@@ -663,6 +714,7 @@
 				169C98AA2C8552D0007344B7 /* Assets.xcassets in Resources */,
 				1629409C2C856D0400580FBE /* N2Q6.mp3 in Resources */,
 				162940AC2C856D0400580FBE /* N2Q22.mp3 in Resources */,
+				161602082C8AE5D600441B2E /* N4Q23.mp3 in Resources */,
 				162940A82C856D0400580FBE /* N2Q18.mp3 in Resources */,
 				162940CF2C856D3600580FBE /* N1Q12.mp3 in Resources */,
 				162940AD2C856D0400580FBE /* N2Q23.mp3 in Resources */,

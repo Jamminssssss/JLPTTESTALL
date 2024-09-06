@@ -794,6 +794,19 @@ let JLPTN4AUDIOTESTaudioQuestions: [AudioQuestion] = [
     AudioQuestion(options: ["いろいろな ばしょに おいて あること", "うって いる ものの しゅるいが 多いこと", "ことばを 話すこと", "お金が ぬすまれないこと"], answer: "うって いる ものの しゅるいが 多いこと", audioFile: "N4Q13", startTime: 0, endTime: 102),
     AudioQuestion(options: ["5時から 5時半まで", "5時から 6時まで", "5時半から 6時まで", "5時半から 6時半まで"], answer: "5時半から 6時半まで", audioFile: "N4Q14", startTime: 0, endTime: 81),
     AudioQuestion(options: ["食べものの 店が たくさん あるから", "まつりが あって にぎやかだから", "ふねの 上で さくらが 見られるから", "会社から あるいて 行けるから"], answer: "ふねの 上で さくらが 見られるから", audioFile: "N4Q15", startTime: 0, endTime: 101),
+    AudioQuestion(options: ["1", "2", "3"], answer: "2", audioFile: "N4Q16", startTime: 0, endTime: 31,images: ["AudioTestImage22"]),
+    AudioQuestion(options: ["1", "2", "3"], answer: "2", audioFile: "N4Q17", startTime: 0, endTime: 34,images: ["AudioTestImage23"]),
+    AudioQuestion(options: ["1", "2", "3"], answer: "1", audioFile: "N4Q18", startTime: 0, endTime: 28,images: ["AudioTestImage24"]),
+    AudioQuestion(options: ["1", "2", "3"], answer: "3", audioFile: "N4Q19", startTime: 0, endTime: 28,images: ["AudioTestImage25"]),
+    AudioQuestion(options: ["1", "2", "3"], answer: "2", audioFile: "N4Q20", startTime: 0, endTime: 24,images: ["AudioTestImage26"]),
+    AudioQuestion(options: ["1", "2", "3"], answer: "1", audioFile: "N4Q21", startTime: 0, endTime: 24),
+    AudioQuestion(options: ["1", "2", "3"], answer: "3", audioFile: "N4Q22", startTime: 0, endTime: 26),
+    AudioQuestion(options: ["1", "2", "3"], answer: "3", audioFile: "N4Q23", startTime: 0, endTime: 27),
+    AudioQuestion(options: ["1", "2", "3"], answer: "1", audioFile: "N4Q24", startTime: 0, endTime: 28),
+    AudioQuestion(options: ["1", "2", "3"], answer: "2", audioFile: "N4Q25", startTime: 0, endTime: 27),
+    AudioQuestion(options: ["1", "2", "3"], answer: "3", audioFile: "N4Q26", startTime: 0, endTime: 24),
+    AudioQuestion(options: ["1", "2", "3"], answer: "2", audioFile: "N4Q27", startTime: 0, endTime: 28),
+    AudioQuestion(options: ["1", "2", "3"], answer: "1", audioFile: "N4Q28", startTime: 0, endTime: 24),
 ]
 
 func JLPT3loadLocalData() -> [Question] {
