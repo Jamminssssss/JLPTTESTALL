@@ -1234,6 +1234,22 @@ let JLPTN3AUDIOTESTaudioQuestions: [AudioQuestion] = [
     AudioQuestion(options: ["サラさんの友人に教えてもらう", "テレビを見て自分で勉強する", "インターネットでレッスンをうける", "外国語の学校に通う"], answer: "サラさんの友人に教えてもらう", audioFile: "N3Q10", startTime: 0, endTime: 127),
     AudioQuestion(options: ["朝食のメニューが売れていない", "近所の人があまり来てくれない", "こんでいてもせきを空けないきゃくがいる", "ことばづかいがよくない店員がいる"], answer: "こんでいてもせきを空けないきゃくがいる", audioFile: "N3Q11", startTime: 0, endTime: 104),
     AudioQuestion(options: ["せんぱいにしりょうを見せる", "ちょうさをしなおす", "しりょうにグラフをくわえる", "はっぴょうのながれを かえる"], answer: "はっぴょうのながれを かえる", audioFile: "N3Q12", startTime: 0, endTime: 107),
+    AudioQuestion(options: ["1", "2", "3", "4"], answer: "3", audioFile: "N3Q13", startTime: 0, endTime: 96),
+    AudioQuestion(options: ["1", "2", "3", "4"], answer: "4", audioFile: "N3Q14", startTime: 0, endTime: 73),
+    AudioQuestion(options: ["1", "2", "3", "4"], answer: "2", audioFile: "N3Q15", startTime: 0, endTime: 85),
+    AudioQuestion(options: ["1", "2", "3"], answer: "1", audioFile: "N3Q16", startTime: 0, endTime: 26, images: ["AudioTestImage27"]),
+    AudioQuestion(options: ["1", "2", "3"], answer: "2", audioFile: "N3Q17", startTime: 0, endTime: 29, images: ["AudioTestImage28"]),
+    AudioQuestion(options: ["1", "2", "3"], answer: "3", audioFile: "N3Q18", startTime: 0, endTime: 30, images: ["AudioTestImage29"]),
+    AudioQuestion(options: ["1", "2", "3"], answer: "3", audioFile: "N3Q19", startTime: 0, endTime: 32, images: ["AudioTestImage30"]),
+    AudioQuestion(options: ["1", "2", "3"], answer: "1", audioFile: "N3Q20", startTime: 0, endTime: 26),
+    AudioQuestion(options: ["1", "2", "3"], answer: "3", audioFile: "N3Q21", startTime: 0, endTime: 26),
+    AudioQuestion(options: ["1", "2", "3"], answer: "2", audioFile: "N3Q22", startTime: 0, endTime: 25),
+    AudioQuestion(options: ["1", "2", "3"], answer: "1", audioFile: "N3Q23", startTime: 0, endTime: 23),
+    AudioQuestion(options: ["1", "2", "3"], answer: "1", audioFile: "N3Q24", startTime: 0, endTime: 28),
+    AudioQuestion(options: ["1", "2", "3"], answer: "3", audioFile: "N3Q25", startTime: 0, endTime: 26),
+    AudioQuestion(options: ["1", "2", "3"], answer: "2", audioFile: "N3Q26", startTime: 0, endTime: 28),
+    AudioQuestion(options: ["1", "2", "3"], answer: "1", audioFile: "N3Q27", startTime: 0, endTime: 30),
+    AudioQuestion(options: ["1", "2", "3"], answer: "2", audioFile: "N3Q28", startTime: 0, endTime: 25),
 ]
 
 
