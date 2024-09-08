@@ -24,6 +24,9 @@ struct JLPTN5AUDIOTEST: View {
     
     var body: some View {
         VStack(spacing: 10) {
+            Spacer()
+            AdBannerView(adUnitID: "ca-app-pub-9940677842340433/8081727159")
+                .frame(width: 320, height: 50)
             Button {
                 dismiss()
             } label: {
@@ -39,7 +42,7 @@ struct JLPTN5AUDIOTEST: View {
             }
             .hAlign(.leading)
             
-           
+            
             
             Text("聴解")
                 .font(.title)
@@ -105,6 +108,9 @@ struct JLPTN5AUDIOTEST: View {
                     }
                 }
             }
+            Spacer()
+            AdBannerView(adUnitID: "ca-app-pub-9940677842340433/6768645481")
+                .frame(width: 320, height: 50)
         }
         .padding(15)
         .hAlign(.center)

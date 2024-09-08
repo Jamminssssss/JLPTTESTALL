@@ -14,6 +14,8 @@ struct ScoreCardView: View {
 
     var body: some View {
         VStack {
+            AdBannerView(adUnitID: "ca-app-pub-9940677842340433/8081727159")
+                .frame(width: 320, height: 50)
             Spacer() // Add this line
             VStack(spacing: 15) {
                 Text("What is your percent correct?")
@@ -27,6 +29,8 @@ struct ScoreCardView: View {
             }
             
             Spacer() // Add this line
+            AdBannerView(adUnitID: "ca-app-pub-9940677842340433/6768645481")
+                .frame(width: 320, height: 50)
             CustomButton(title: "Restart") {
                 // Firebase 관련 코드 제거
                 // 대신 다른 작업을 수행하거나, 단순히 로그를 출력하는 등

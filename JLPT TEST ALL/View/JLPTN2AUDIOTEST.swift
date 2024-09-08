@@ -24,6 +24,8 @@ struct JLPTN2AUDIOTEST: View {
     
     var body: some View {
         VStack(spacing: 10) {
+            AdBannerView(adUnitID: "ca-app-pub-9940677842340433/8081727159")
+                .frame(width: 320, height: 50)
             Button {
                 dismiss()
             } label: {
@@ -103,6 +105,9 @@ struct JLPTN2AUDIOTEST: View {
                     }
                 }
             }
+            Spacer()
+            AdBannerView(adUnitID: "ca-app-pub-9940677842340433/6768645481")
+                .frame(width: 320, height: 50)
         }
         .padding(15)
         .hAlign(.center)

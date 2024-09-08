@@ -8,27 +8,65 @@
 import SwiftUI
 import GoogleMobileAds
 
-struct AdBannerView: UIViewRepresentable {
+struct AdBannerView: UIViewControllerRepresentable {
     var adUnitID: String
-
-    func makeUIView(context: Context) -> GADBannerView {
-        let banner = GADBannerView(adSize: GADAdSizeBanner)
-        banner.adUnitID = adUnitID
+   
+    func makeUIViewController(context: Context) -> UIViewController {
+        let viewController = UIViewController()
+        let bannerView = GADBannerView(adSize: GADAdSizeBanner)
+        bannerView.adUnitID = adUnitID
+        bannerView.rootViewController = viewController
+        bannerView.load(GADRequest())
+        viewController.view.addSubview(bannerView)
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            bannerView.centerXAnchor.constraint(equalTo: viewController.view.centerXAnchor),
+            bannerView.bottomAnchor.constraint(equalTo: viewController.view.safeAreaLayoutGuide.bottomAnchor)
+        ])
         
-        // iOS 15 이상에서는 UIWindowScene의 windows를 사용
-        if let rootViewController = UIApplication.shared.connectedScenes
-            .compactMap({ $0 as? UIWindowScene })
-            .flatMap({ $0.windows })
-            .first(where: { $0.isKeyWindow })?.rootViewController {
-            banner.rootViewController = rootViewController
-        }
-
-        banner.load(GADRequest())
-        return banner
+        return viewController
     }
-
-    func updateUIView(_ uiView: GADBannerView, context: Context) {
-        // 배너 업데이트 로직 (필요할 경우)
-    }
+    
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }
 
+class ViewController: UIViewController {
+
+  var bannerView: GADBannerView!
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    let viewWidth = view.frame.inset(by: view.safeAreaInsets).width
+
+    // Here the current interface orientation is used. Use
+    // GADLandscapeAnchoredAdaptiveBannerAdSizeWithWidth or
+    // GADPortraitAnchoredAdaptiveBannerAdSizeWithWidth if you prefer to load an ad of a
+    // particular orientation,
+    let adaptiveSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth)
+    bannerView = GADBannerView(adSize: adaptiveSize)
+
+    addBannerViewToView(bannerView)
+  }
+
+  func addBannerViewToView(_ bannerView: GADBannerView) {
+    bannerView.translatesAutoresizingMaskIntoConstraints = false
+    view.addSubview(bannerView)
+    view.addConstraints(
+      [NSLayoutConstraint(item: bannerView,
+                          attribute: .bottom,
+                          relatedBy: .equal,
+                          toItem: view.safeAreaLayoutGuide,
+                          attribute: .bottom,
+                          multiplier: 1,
+                          constant: 0),
+       NSLayoutConstraint(item: bannerView,
+                          attribute: .centerX,
+                          relatedBy: .equal,
+                          toItem: view,
+                          attribute: .centerX,
+                          multiplier: 1,
+                          constant: 0)
+      ])
+   }
+}

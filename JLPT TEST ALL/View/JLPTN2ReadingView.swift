@@ -26,11 +26,16 @@ struct JLPTN2ReadingView: View {
 
     var body: some View {
         VStack(spacing: 10) {
+            AdBannerView(adUnitID: "ca-app-pub-9940677842340433/8081727159")
+                .frame(width: 320, height: 50)
             dismissButton
             quizTitle
             progressBar
             questionViewer
             nextButton
+            Spacer()
+            AdBannerView(adUnitID: "ca-app-pub-9940677842340433/6768645481")
+                .frame(width: 320, height: 50)
         }
         .padding(15)
         .hAlign(.center).vAlign(.top)
