@@ -17,38 +17,41 @@ struct JLPTN5: View {
     @State private var score: CGFloat = 0
     @State private var showScoreCard: Bool = false
     @State private var fontSizeChange: CGFloat = 0
-    @State private var progress: CGFloat = 0
-    @State private var progressString: String = "0%"
 
-    // 이미지 크기 조정을 위한 상태 변수
     @State private var imageWidth: CGFloat = 300
     @State private var imageHeight: CGFloat = 300
+    
+    let dbHelper = SQLiteHelper()
+    let tableName = "JLPTN5Progress"  // 고유한 테이블 이름 지정
 
     var body: some View {
         VStack(spacing: 10) {
-            AdBannerView(adUnitID: "ca-app-pub-9940677842340433/8081727159")
-                .frame(width: 320, height: 50)
             dismissButton
             quizTitle
-            progressBar
             questionViewer
             nextButton
-            Spacer()
-            AdBannerView(adUnitID: "ca-app-pub-9940677842340433/6768645481")
-                .frame(width: 320, height: 50)
         }
         .padding(15)
         .hAlign(.center).vAlign(.top)
         .background(Color.white.ignoresSafeArea())
         .environment(\.colorScheme, .dark)
         .fullScreenCover(isPresented: $showScoreCard) {
+            // ScoreCardView에서 퀴즈 재시작 처리
             ScoreCardView(score: score / CGFloat(questions.count) * 100) {
-                dismiss()
-                onFinish()
+                resetQuiz()   // 퀴즈 상태를 초기화
+                showScoreCard = false  // ScoreCardView를 닫음
             }
         }
-        .task {
-            questions = JLPTN5loadLocalData() // 변경된 부분
+        .onAppear {
+            // 테이블 생성 및 진행 상황 불러오기
+            dbHelper.createTable(tableName: tableName)
+            if let savedProgress = dbHelper.loadProgress(tableName: tableName) {
+                currentIndex = savedProgress.0
+                score = savedProgress.1
+            }
+
+            // 문제 불러오기
+            questions = JLPTN5loadLocalData()
         }
     }
 
@@ -68,6 +71,7 @@ struct JLPTN5: View {
         }
         .hAlign(.leading)
     }
+
     private var quizTitle: some View {
         Text("文字、語彙")
             .font(.title)
@@ -76,30 +80,10 @@ struct JLPTN5: View {
             .foregroundColor(.black)
     }
 
-    private var progressBar: some View {
-        GeometryReader { geometry in
-            ZStack(alignment: .leading) {
-                Rectangle()
-                    .fill(Color.black.opacity(0.2))
-                Rectangle()
-                    .fill(Color.green)
-                    .frame(width: progress * geometry.size.width, alignment: .leading)
-                Text(progressString)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity, alignment: .center)
-            }
-            .clipShape(Capsule())
-        }
-        .frame(height: 20)
-        .padding(.top, 6)
-    }
-
     private var questionViewer: some View {
         GeometryReader { geometry in
             ForEach(questions.indices, id: \.self) { index in
                 if currentIndex == index {
-                    // `questions` 배열에서 `currentIndex` 위치의 요소를 `Binding`으로 래핑합니다.
                     let questionBinding = Binding(
                         get: { questions[index] },
                         set: { newValue in
@@ -107,8 +91,8 @@ struct JLPTN5: View {
                         }
                     )
                     
-                    QuestionView(
-                        question: questionBinding, // Binding<Question>으로 전달
+                    QuestionView1(
+                        question: questionBinding,
                         fontSizeChange: $fontSizeChange,
                         scale: .constant(1.0),
                         currentIndex: $currentIndex,
@@ -126,24 +110,40 @@ struct JLPTN5: View {
     }
 
     private var nextButton: some View {
-        CustomButton(title: currentIndex == (questions.count - 1) ? "End" : "Next Question") {
+        CustomButton(title: currentIndex == (questions.count - 1) ? "end" : "next question") {
             if currentIndex == (questions.count - 1) {
                 showScoreCard.toggle()
             } else {
                 withAnimation(.easeInOut) {
                     currentIndex += 1
-                    progress = CGFloat(currentIndex) / CGFloat(questions.count - 1)
-                    progressString = String(format: "%.0f%%", progress * 100)
+
+                    // SQLite에 진행 상황 저장
+                    dbHelper.saveProgress(tableName: tableName, currentIndex: currentIndex, score: score)
                 }
             }
+        }
+    }
+
+    // 퀴즈 초기화 로직
+    private func resetQuiz() {
+        withAnimation(.easeInOut) {
+            currentIndex = 0
+            score = 0
+            // 각 문제의 tappedAnswer를 초기화하여 선택된 옵션을 모두 초기화
+            for index in questions.indices {
+                questions[index].tappedAnswer = ""  // 선택된 답변 초기화
+            }
+            dbHelper.resetProgress(tableName: tableName) // SQLite에 저장된 진행 상황 초기화
         }
     }
 }
 
 
 
+
+
 @ViewBuilder
-func QuestionView4(
+func QuestionView(
     question: Binding<Question>,
     fontSizeChange: Binding<CGFloat>,
     scale: Binding<CGFloat>,
@@ -185,34 +185,7 @@ func QuestionView4(
                 .frame(maxWidth: .infinity) // ScrollView가 가능한 모든 너비를 사용하도록 설정합니다.
             }
 
-            if let imageName = question.wrappedValue.imageName {
-                ScrollView(.horizontal) {
-                    HStack {
-                        Spacer()
-                        Image(imageName)
-                            .resizable()
-                            .scaledToFit()
-                            .clipped()
-                            .frame(width: imageWidth.wrappedValue, height: imageHeight.wrappedValue)
-                            .gesture(
-                                DragGesture()
-                                    .onChanged { value in
-                                        let newWidth = max(100, imageWidth.wrappedValue + value.translation.width)
-                                        let newHeight = max(100, imageHeight.wrappedValue + value.translation.height)
-                                        imageWidth.wrappedValue = newWidth
-                                        imageHeight.wrappedValue = newHeight
-                                    }
-                                    .exclusively(
-                                        before: TapGesture(count: 2).onEnded { _ in
-                                            imageWidth.wrappedValue = 300
-                                            imageHeight.wrappedValue = 300
-                                        }
-                                    )
-                            )
-                        Spacer()
-                    }
-                }
-            }
+           
 
             VStack(spacing: 12) {
                 ForEach(question.wrappedValue.options, id: \.self) { option in
@@ -241,7 +214,7 @@ func QuestionView4(
 }
 
 @ViewBuilder
-func OptionView4(
+func OptionView(
     _ option: String,
     _ tint: Color,
     scale: Binding<CGFloat>,
@@ -260,7 +233,7 @@ func OptionView4(
                 .foregroundColor(tint)
             HighlightedText(text: parts[1], keywords: optionKeywords)
         } else {
-            HighlightedText(text: option, keywords: optionKeywords)
+            HighlightedText(text: option, keywords: optionKeywords)  // 수정된 부분: HighlightedText 사용
         }
     }
     .padding(.horizontal, 5)
@@ -276,7 +249,6 @@ func OptionView4(
     }
     .accessibility(label: Text(option))
 }
-
 
 
 #Preview {

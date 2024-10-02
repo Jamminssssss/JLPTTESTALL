@@ -8,25 +8,25 @@
 import SwiftUI
 import AVFoundation
 
+
 struct JLPTN5AUDIOTEST: View {
     @State private var currentIndex: Int = 0
     @State private var score: CGFloat = 0
     @State private var showScoreCard: Bool = false
-    @State private var progress: CGFloat = 0
-    @State private var progressString: String = "0%"
     @State private var audioPlayer: AVAudioPlayer?
     @State private var isPlaying: Bool = false
     @State private var tappedAnswer: String = ""
     @State private var navigateToSelectAudioTest = false
     @Environment(\.dismiss) private var dismiss
     
-    var onFinish: () -> ()
+    // 퀴즈 진행 상태를 저장하는 헬퍼 클래스
+    let dbHelper = SQLiteHelper()
+    let tableName = "JLPTN5AudioTest" // 테이블 이름 정의
     
+    var onFinish: () -> ()
+
     var body: some View {
         VStack(spacing: 10) {
-            Spacer()
-            AdBannerView(adUnitID: "ca-app-pub-9940677842340433/8081727159")
-                .frame(width: 320, height: 50)
             Button {
                 dismiss()
             } label: {
@@ -42,40 +42,27 @@ struct JLPTN5AUDIOTEST: View {
             }
             .hAlign(.leading)
             
-            
-            
             Text("聴解")
                 .font(.title)
                 .fontWeight(.semibold)
                 .hAlign(.center)
                 .foregroundColor(.black)
             
-            GeometryReader { geometry in
-                ZStack(alignment: .leading) {
-                    Rectangle()
-                        .fill(Color.black.opacity(0.2))
-                    
-                    Rectangle()
-                        .fill(Color.green)
-                        .frame(width: progress * geometry.size.width, alignment: .leading)
-                    
-                    Text(progressString)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                }
-                .clipShape(Capsule())
-            }
-            .frame(height: 20)
-            .padding(.top, 5)
+            if !audioQuestions.isEmpty, audioQuestions.indices.contains(currentIndex) {
+                           Text("Question \(currentIndex + 1)/\(audioQuestions.count)")
+                               .font(.callout)
+                               .foregroundColor(.gray)
+                               .frame(maxWidth: .infinity, alignment: .center)
+                       }
             
-            if !JLPTN5AUDIOTESTaudioQuestions.isEmpty, JLPTN5AUDIOTESTaudioQuestions.indices.contains(currentIndex) {
-                QuestionView(audioQuestion: JLPTN5AUDIOTESTaudioQuestions[currentIndex], tappedAnswer: $tappedAnswer) { option in
+            
+            if !audioQuestions.isEmpty, audioQuestions.indices.contains(currentIndex) {
+                QuestionView(audioQuestion: audioQuestions[currentIndex], tappedAnswer: $tappedAnswer) { option in
                     guard tappedAnswer == "" else { return }
                     withAnimation(.easeInOut) {
                         tappedAnswer = option
                         
-                        if JLPTN5AUDIOTESTaudioQuestions[currentIndex].answer == option {
+                        if audioQuestions[currentIndex].answer == option {
                             score += 1.0
                         }
                     }
@@ -84,33 +71,30 @@ struct JLPTN5AUDIOTEST: View {
                 .padding(.vertical, 15)
             }
             
-            CustomButton(title: currentIndex == (JLPTN5AUDIOTESTaudioQuestions.count - 1) ? "End" : "Next Question") {
+            CustomButton(title: currentIndex == (audioQuestions.count - 1) ? "End" : "Next Question") {
                 // 오디오 정지
                 audioPlayer?.stop()
                 
-                if currentIndex == (JLPTN5AUDIOTESTaudioQuestions.count - 1) {
+                if currentIndex == (audioQuestions.count - 1) {
                     // 마지막 문제라면 SelectAudioTest로 이동
-                    dismiss() // 현재 화면을 닫습니다
-                    onFinish() // 추가 작업을 실행합니다
+                    dbHelper.resetProgress(tableName: tableName) // 진행 상태 초기화
+                    dismiss()
+                    onFinish() // 추가 작업을 실행
                     
-                    // SelectAudioTest로 이동하는 코드 추가
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        // 'dismiss()' 호출 후 잠시 기다린 다음 SelectAudioTest 화면으로 이동
                         navigateToSelectAudioTest = true
                     }
                 } else {
                     // 다음 문제로 이동
                     withAnimation(.easeInOut) {
                         currentIndex += 1
-                        progress = CGFloat(currentIndex) / CGFloat(JLPTN5AUDIOTESTaudioQuestions.count - 1)
-                        progressString = String(format: "%.0f%%", progress * 100)
                         tappedAnswer = "" // 선택한 답변 초기화
+                        
+                        // SQLite에 진행 상태 저장
+                        dbHelper.saveProgress(tableName: tableName, currentIndex: currentIndex, score: score)
                     }
                 }
             }
-            Spacer()
-            AdBannerView(adUnitID: "ca-app-pub-9940677842340433/6768645481")
-                .frame(width: 320, height: 50)
         }
         .padding(15)
         .hAlign(.center)
@@ -122,9 +106,17 @@ struct JLPTN5AUDIOTEST: View {
         .environment(\.colorScheme, .dark)
         .fullScreenCover(isPresented: $showScoreCard) {
             // ScoreCardView code goes here
-            ScoreCardView(score: score / CGFloat(JLPTN5AUDIOTESTaudioQuestions.count) * 100) {
+            ScoreCardView(score: score / CGFloat(audioQuestions.count) * 100) {
                 dismiss()
                 onFinish()
+            }
+        }
+        .onAppear {
+            // 진행 상황 복원
+            dbHelper.createTable(tableName: tableName)
+            if let savedProgress = dbHelper.loadProgress(tableName: tableName) {
+                currentIndex = savedProgress.0  // 저장된 문제 번호 복원
+                score = savedProgress.1  // 저장된 점수 복원
             }
         }
     }

@@ -190,6 +190,8 @@
 		169C98A82C8552CE007344B7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169C98A72C8552CE007344B7 /* ContentView.swift */; };
 		169C98AA2C8552D0007344B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 169C98A92C8552D0007344B7 /* Assets.xcassets */; };
 		169C98AD2C8552D0007344B7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 169C98AC2C8552D0007344B7 /* Preview Assets.xcassets */; };
+		16C264442CA7BE0700E846E1 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 16C264432CA7BE0700E846E1 /* SQLite */; };
+		16C264462CA7BE3300E846E1 /* SQLiteHelper .swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C264452CA7BE3300E846E1 /* SQLiteHelper .swift */; };
 		16E8322B2C897D83007628B1 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 16E8322A2C897D83007628B1 /* GoogleMobileAds */; };
 		16E8322E2C898019007628B1 /* AdBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E8322D2C898019007628B1 /* AdBannerView.swift */; };
 /* End PBXBuildFile section */
@@ -379,6 +381,7 @@
 		169C98A72C8552CE007344B7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		169C98A92C8552D0007344B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		169C98AC2C8552D0007344B7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		16C264452CA7BE3300E846E1 /* SQLiteHelper .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SQLiteHelper .swift"; path = "../../../JLPTTESTN3-main/JlptN3Test/Model/SQLiteHelper .swift"; sourceTree = "<group>"; };
 		16E8322C2C897D99007628B1 /* JLPT-TEST-ALL-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "JLPT-TEST-ALL-Info.plist"; sourceTree = SOURCE_ROOT; };
 		16E8322D2C898019007628B1 /* AdBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdBannerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -388,6 +391,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C264442CA7BE0700E846E1 /* SQLite in Frameworks */,
 				16E8322B2C897D83007628B1 /* GoogleMobileAds in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,6 +442,7 @@
 				16293FE32C85545900580FBE /* AudioQuestion .swift */,
 				16293FE42C85545900580FBE /* DataLoader.swift */,
 				16293FE22C85545900580FBE /* Question.swift */,
+				16C264452CA7BE3300E846E1 /* SQLiteHelper .swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -685,6 +690,7 @@
 			name = "JLPT TEST ALL";
 			packageProductDependencies = (
 				16E8322A2C897D83007628B1 /* GoogleMobileAds */,
+				16C264432CA7BE0700E846E1 /* SQLite */,
 			);
 			productName = "JLPT TEST ALL";
 			productReference = 169C98A22C8552CE007344B7 /* JLPT TEST ALL.app */;
@@ -716,6 +722,7 @@
 			mainGroup = 169C98992C8552CE007344B7;
 			packageReferences = (
 				16E832292C897D83007628B1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+				16C264422CA7BE0700E846E1 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
 			);
 			productRefGroup = 169C98A32C8552CE007344B7 /* Products */;
 			projectDirPath = "";
@@ -912,6 +919,7 @@
 				162940192C85560A00580FBE /* JLPTN2AUDIOTEST.swift in Sources */,
 				162940002C85546700580FBE /* JLPTN3SelectView.swift in Sources */,
 				16293FF82C85546700580FBE /* JLPTN5GrammarView.swift in Sources */,
+				16C264462CA7BE3300E846E1 /* SQLiteHelper .swift in Sources */,
 				16293FFB2C85546700580FBE /* SelectableTextView.swift in Sources */,
 				16293FF92C85546700580FBE /* JLPTN5ReadingView.swift in Sources */,
 				162C18E22C86ABBC0066BF4C /* JLPTN5SelectView.swift in Sources */,
@@ -1071,7 +1079,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jaeminpark.JLPT-TEST-ALL";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1101,7 +1109,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jaeminpark.JLPT-TEST-ALL";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1134,6 +1142,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		16C264422CA7BE0700E846E1 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.15.3;
+			};
+		};
 		16E832292C897D83007628B1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads";
@@ -1145,6 +1161,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		16C264432CA7BE0700E846E1 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16C264422CA7BE0700E846E1 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
+		};
 		16E8322A2C897D83007628B1 /* GoogleMobileAds */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 16E832292C897D83007628B1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;

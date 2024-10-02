@@ -17,25 +17,24 @@ struct JLPTN5ReadingView: View {
     @State private var score: CGFloat = 0
     @State private var showScoreCard: Bool = false
     @State private var fontSizeChange: CGFloat = 0
-    @State private var progress: CGFloat = 0
-    @State private var progressString: String = "0%"
-
-    // 이미지 크기 조정을 위한 상태 변수
-    @State private var imageWidth: CGFloat = 800
-    @State private var imageHeight: CGFloat = 800
-
+    @State private var isFullScreenMode: Bool = false
+    
+    @State private var imageWidth: CGFloat = 300
+    @State private var imageHeight: CGFloat = 300
+    
+    let dbHelper = SQLiteHelper()
+    let tableName = "JLPTN5Reading"
+    
     var body: some View {
         VStack(spacing: 10) {
-            AdBannerView(adUnitID: "ca-app-pub-9940677842340433/8081727159")
-                .frame(width: 320, height: 50)
-            dismissButton
+            headerButtons
             quizTitle
-            progressBar
-            questionViewer
-            nextButton
-            Spacer()
-            AdBannerView(adUnitID: "ca-app-pub-9940677842340433/6768645481")
-                .frame(width: 320, height: 50)
+            if isFullScreenMode {
+                fullScreenQuestionView
+            } else {
+                questionViewer
+                nextButton
+            }
         }
         .padding(15)
         .hAlign(.center).vAlign(.top)
@@ -43,34 +42,45 @@ struct JLPTN5ReadingView: View {
         .environment(\.colorScheme, .dark)
         .fullScreenCover(isPresented: $showScoreCard) {
             ScoreCardView(score: score / CGFloat(questions.count) * 100) {
-                dismiss()
-                onFinish()
+                resetQuiz()
+                showScoreCard = false
             }
         }
-        .task {
-            questions = JLPTN5ReadingloadLocalData() // 변경된 부분
+        .onAppear {
+            dbHelper.createTable(tableName: tableName)
+            if let savedProgress = dbHelper.loadProgress(tableName: tableName) {
+                currentIndex = savedProgress.0
+                score = savedProgress.1
+            }
+            questions = JLPTN5ReadingloadLocalData()
         }
     }
-
-    // UI 구성 요소
-    private var dismissButton: some View {
-        Button {
-            dismiss()
-        } label: {
-            HStack {
+    
+    private var headerButtons: some View {
+        HStack {
+            Button {
+                dismiss()
+            } label: {
                 Image(systemName: "xmark")
                     .font(.title3)
                     .foregroundColor(.red)
-
                 Text("Exit")
                     .font(.title3)
                     .fontWeight(.semibold)
                     .foregroundColor(.red)
             }
+            Spacer()
+            Button {
+                isFullScreenMode.toggle()
+            } label: {
+                Image(systemName: isFullScreenMode ? "arrow.down.right.and.arrow.up.left" : "arrow.up.left.and.arrow.down.right")
+                    .font(.title3)
+                    .foregroundColor(.blue)
+            }
         }
         .hAlign(.leading)
     }
-
+    
     private var quizTitle: some View {
         Text("読解")
             .font(.title)
@@ -78,31 +88,43 @@ struct JLPTN5ReadingView: View {
             .hAlign(.center)
             .foregroundColor(.black)
     }
-
-    private var progressBar: some View {
-        GeometryReader { geometry in
-            ZStack(alignment: .leading) {
-                Rectangle()
-                    .fill(Color.black.opacity(0.2))
-                Rectangle()
-                    .fill(Color.green)
-                    .frame(width: progress * geometry.size.width, alignment: .leading)
-                Text(progressString)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity, alignment: .center)
+    
+    // 전체 화면 모드에서 세로 스크롤을 하며 밑줄 포함 텍스트 표시
+    private var fullScreenQuestionView: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 15) {
+                if let questionText = questions[currentIndex].question {
+                    let keywords = questions[currentIndex].underlinedKeywords ?? []
+                    let parts = questionText.components(separatedBy: "___")
+                    
+                    VStack {
+                        if parts.count == 2 {
+                            HighlightedText(text: parts[0], keywords: keywords)
+                            Text("_____")  // 밑줄 부분
+                                .underline()
+                                .font(.title)
+                                .padding(.vertical, 10)
+                                .foregroundColor(.black)
+                            HighlightedText(text: parts[1], keywords: keywords)
+                        } else {
+                            HighlightedText(text: questionText, keywords: keywords)
+                        }
+                    }
+                    .font(.system(size: 28))  // 전체 화면에서 큰 글씨로 설정
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.leading)
+                }
             }
-            .clipShape(Capsule())
+            .padding()
         }
-        .frame(height: 20)
-        .padding(.top, 6)
+        .background(Color.white)
+        .ignoresSafeArea()
     }
-
+    
     private var questionViewer: some View {
         GeometryReader { geometry in
             ForEach(questions.indices, id: \.self) { index in
                 if currentIndex == index {
-                    // `questions` 배열에서 `currentIndex` 위치의 요소를 `Binding`으로 래핑합니다.
                     let questionBinding = Binding(
                         get: { questions[index] },
                         set: { newValue in
@@ -110,8 +132,8 @@ struct JLPTN5ReadingView: View {
                         }
                     )
                     
-                    QuestionView1(
-                        question: questionBinding, // Binding<Question>으로 전달
+                    QuestionView2(
+                        question: questionBinding,
                         fontSizeChange: $fontSizeChange,
                         scale: .constant(1.0),
                         currentIndex: $currentIndex,
@@ -127,24 +149,34 @@ struct JLPTN5ReadingView: View {
         .padding(.horizontal, -15)
         .padding(.vertical, 15)
     }
-
+    
     private var nextButton: some View {
-        CustomButton(title: currentIndex == (questions.count - 1) ? "End" : "Next Question") {
+        CustomButton(title: currentIndex == (questions.count - 1) ? "end" : "next question") {
             if currentIndex == (questions.count - 1) {
                 showScoreCard.toggle()
             } else {
                 withAnimation(.easeInOut) {
                     currentIndex += 1
-                    progress = CGFloat(currentIndex) / CGFloat(questions.count - 1)
-                    progressString = String(format: "%.0f%%", progress * 100)
+                    dbHelper.saveProgress(tableName: tableName, currentIndex: currentIndex, score: score)
                 }
             }
+        }
+    }
+    
+    private func resetQuiz() {
+        withAnimation(.easeInOut) {
+            currentIndex = 0
+            score = 0
+            for index in questions.indices {
+                questions[index].tappedAnswer = ""
+            }
+            dbHelper.resetProgress(tableName: tableName)
         }
     }
 }
 
 @ViewBuilder
-func QuestionView15(
+func QuestionView2(
     question: Binding<Question>,
     fontSizeChange: Binding<CGFloat>,
     scale: Binding<CGFloat>,
@@ -160,54 +192,37 @@ func QuestionView15(
                 .font(.callout)
                 .foregroundColor(.gray)
                 .frame(maxWidth: .infinity, alignment: .center)
-
+            
             if let questionText = question.wrappedValue.question {
-                Text(questionText)
-                    .font(.title)
-                    .padding(.bottom, 10)
-                    .foregroundColor(.black)
-                    .frame(maxWidth: .infinity, alignment: .center)
-            }
-
-            if let imageName = question.wrappedValue.imageName {
-                ScrollView(.horizontal) {
-                    HStack {
-                        Spacer()
-                        GeometryReader { geometry in
-                            Image(imageName)
-                                .resizable()
-                                .scaledToFit()
-                                .clipped()
-                                .gesture(
-                                    DragGesture()
-                                        .onChanged { value in
-                                            let newWidth = max(100, imageWidth.wrappedValue + value.translation.width)
-                                            let newHeight = max(100, imageHeight.wrappedValue + value.translation.height)
-                                            imageWidth.wrappedValue = newWidth
-                                            imageHeight.wrappedValue = newHeight
-                                        }
-                                )
-                                .gesture(
-                                    TapGesture(count: 2)
-                                        .onEnded { _ in
-                                            imageWidth.wrappedValue = 800
-                                            imageHeight.wrappedValue = 800
-                                        }
-                                )
-                        }
-                        .frame(width: imageWidth.wrappedValue, height: imageHeight.wrappedValue)
-                        Spacer()
+                let keywords = question.wrappedValue.underlinedKeywords ?? []
+                let parts = questionText.components(separatedBy: "___")
+                
+                VStack {
+                    if parts.count == 2 {
+                        HighlightedText(text: parts[0], keywords: keywords)
+                        Text("_____")
+                            .underline()
+                            .font(.title)
+                            .padding(.vertical, 10)
+                            .foregroundColor(.black)
+                        HighlightedText(text: parts[1], keywords: keywords)
+                    } else {
+                        HighlightedText(text: questionText, keywords: keywords)
                     }
                 }
+                .font(.system(size: 20))
+                .padding(.bottom, 10)
+                .foregroundColor(.black)
+                .frame(maxWidth: .infinity, alignment: .center)
             }
-
+            
             VStack(spacing: 12) {
                 ForEach(question.wrappedValue.options, id: \.self) { option in
                     ZStack {
-                        OptionView1(option, question.wrappedValue.answer == option && question.wrappedValue.tappedAnswer != "" ? Color.green : Color.black, scale: scale)
-
+                        OptionView(option, question.wrappedValue.answer == option && question.wrappedValue.tappedAnswer != "" ? Color.green : Color.black, scale: scale)
+                        
                         if question.wrappedValue.tappedAnswer == option && question.wrappedValue.tappedAnswer != question.wrappedValue.answer {
-                            OptionView1(option, Color.red, scale: scale)
+                            OptionView(option, Color.red, scale: scale)
                         }
                     }
                     .contentShape(Rectangle())
@@ -225,15 +240,17 @@ func QuestionView15(
     }
 }
 
+
+
 @ViewBuilder
-func OptionView15(
+func OptionView2(
     _ option: String,
     _ tint: Color,
     scale: Binding<CGFloat>
 ) -> some View {
     Text(option)
         .fixedSize(horizontal: false, vertical: true)
-        .font(.system(size: 25 + scale.wrappedValue))
+        .font(.system(size: 18))
         .foregroundColor(tint)
         .padding(.horizontal, 5)
         .padding(.vertical, 10)
@@ -248,6 +265,8 @@ func OptionView15(
         }
 }
 
+
 #Preview {
     ContentView()
 }
+
